@@ -1,49 +1,59 @@
 package com.shopToolsQA.stepDefinition;
 
-import java.util.concurrent.TimeUnit;
+import com.shopToolsQA.Hooks.Hooks;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pageObjects.CartPage;
-import pageObjects.HomePage;
-import pageObjects.PersonalPage;
-import pageObjects.PlaceOrderPage;
-import pageObjects.ProductListingPage;
+import pageObjectsE2E.CartPage;
+import pageObjectsE2E.HomePage;
+import pageObjectsE2E.PersonalPage;
+import pageObjectsE2E.PlaceOrderPage;
+import pageObjectsE2E.ProductListingPage;
 
-public class StepDefinationE2ETests {
-WebDriver driver;
-HomePage hp;
-ProductListingPage plp;
-
-
-@Given("^User open google chrome web browser$")
-public void user_open_google_chrome_web_browser() throws Throwable {
+public class StepDefinationE2ETests extends Hooks{
 	
-  // HomePage hp = new HomePage(driver);
-	//hp.init();
-   // hp.navigateToHomePage();
-    // plp = new ProductListingPage(driver);
-    // plp.clickOnSearchButton();
-			
-    
+	@Before()
+	public void openTest() {
+		System.out.println("Opening test");
+	}
+
+	@After()
+	public void tearDownTest() {
+		System.out.println("Closing test");
+
+		//driver.quit();
+	}
+
+
+@Given("^launch the application in \"([^\"]*)\"$")
+public void launch_the_application_in(String Browser) throws Throwable {
 	
-	 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Faruq\\eclipse-workspace\\ToolsQA_CucumberFramework\\Driver\\chromedriver.exe");
-	driver = new ChromeDriver();
-	    
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		//driver.get("http://www.shop.demoqa.com");
-		// plp = new ProductListingPage(driver);
-		// plp.clickOnSearchButton();
-		    }
+
+	if(Browser.equalsIgnoreCase("GC"))
+	{
+		Hooks.Chrome_launch();
+	}
+	if(Browser.equalsIgnoreCase("FF"))
+	{
+		Hooks.Firefox_launch();
+	}
+	/*
+	if(Browser.equalsIgnoreCase("IE"))
+	{
+		Hooks.IE_launch();
+	}
+*/
+   
+}
 @Given("^User go to web application$")
 public void user_go_to_web_application() throws Throwable {
 	HomePage hp = new HomePage(driver);
 	hp.navigateToHomePage();
-	//driver.get("http://www.shop.demoqa.com"); 
+	//driver.get("http://www.shop.demoqa.com");
+	
 }
 
 

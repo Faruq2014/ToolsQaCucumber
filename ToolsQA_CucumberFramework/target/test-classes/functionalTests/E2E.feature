@@ -1,8 +1,8 @@
 Feature: End to end test
+@functional @regressional
+Scenario Outline: Buying a product
 
-Scenario: Buying a product
-
-Given User open google chrome web browser
+Given launch the application in "<Browser>"
 And User go to web application
 When User want to search for Dress
 And User want to buy the first item
@@ -25,4 +25,11 @@ And user click on Place order
 Then user will find order confirmation page
 And user will find thank you message
 And user will find order number
+
+
+Examples:  
+| Browser|    
+| GC     | 
+| FF     | 
+| IE     | 
 

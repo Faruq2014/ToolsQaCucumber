@@ -1,0 +1,45 @@
+@system
+Feature: Login
+
+  Background: open toolsQA             [90m# Login.feature:3[0m
+    [32mGiven [0m[32muser open browser[0m            [90m# StepDefinationLoginTests.user_open_browser()[0m
+    [32mWhen [0m[32muser enter url[0m                [90m# StepDefinationLoginTests.user_enter_url()[0m
+    [32mThen [0m[32muser should open landing page[0m [90m# StepDefinationLoginTests.user_should_open_landing_page()[0m
+
+  Scenario: valid login             [90m# Login.feature:8[0m
+    [32mWhen [0m[32muser enter valid username[0m  [90m# StepDefinationLoginTests.user_enter_valid_username()[0m
+    [32mAnd [0m[32muser enter valid  password[0m  [90m# StepDefinationLoginTests.user_enter_valid_password()[0m
+    [32mAnd [0m[32mclick on submit button[0m      [90m# StepDefinationLoginTests.click_on_submit_button()[0m
+    [32mThen [0m[32muser should have home page[0m [90m# StepDefinationLoginTests.user_should_have_home_page()[0m
+
+  Scenario Outline: Invalid login                [90m# Login.feature:15[0m
+    [36mWhen [0m[36muser enter invalid "<username>"[0m
+    [36mAnd [0m[36muser enter invalid  "<password>"[0m
+    [36mAnd [0m[36mclick on submit button for negative test[0m
+    [36mThen [0m[36muser should have landing page[0m
+
+    Examples: 
+
+  Background: open toolsQA             [90m# Login.feature:3[0m
+    [32mGiven [0m[32muser open browser[0m            [90m# StepDefinationLoginTests.user_open_browser()[0m
+    [32mWhen [0m[32muser enter url[0m                [90m# StepDefinationLoginTests.user_enter_url()[0m
+    [32mThen [0m[32muser should open landing page[0m [90m# StepDefinationLoginTests.user_should_open_landing_page()[0m
+
+  @system
+  Scenario Outline: Invalid login                [90m# Login.feature:22[0m
+    [32mWhen [0m[32muser enter invalid "[0m[32m[1mmmmmmmmm[0m[32m"[0m           [90m# StepDefinationLoginTests.user_enter_invalidUName(String)[0m
+    [32mAnd [0m[32muser enter invalid  "[0m[32m[1mllllllll[0m[32m"[0m           [90m# StepDefinationLoginTests.user_enter_invalidPWord(String)[0m
+    [32mAnd [0m[32mclick on submit button for negative test[0m [90m# StepDefinationLoginTests.click_on_submit_button_for_negative_test()[0m
+    [32mThen [0m[32muser should have landing page[0m           [90m# StepDefinationLoginTests.user_should_have_landing_page()[0m
+
+  Background: open toolsQA             [90m# Login.feature:3[0m
+    [32mGiven [0m[32muser open browser[0m            [90m# StepDefinationLoginTests.user_open_browser()[0m
+    [32mWhen [0m[32muser enter url[0m                [90m# StepDefinationLoginTests.user_enter_url()[0m
+    [32mThen [0m[32muser should open landing page[0m [90m# StepDefinationLoginTests.user_should_open_landing_page()[0m
+
+  @system
+  Scenario Outline: Invalid login                [90m# Login.feature:23[0m
+    [32mWhen [0m[32muser enter invalid "[0m[32m[1mkkkkkkkk[0m[32m"[0m           [90m# StepDefinationLoginTests.user_enter_invalidUName(String)[0m
+    [32mAnd [0m[32muser enter invalid  "[0m[32m[1moooooooo[0m[32m"[0m           [90m# StepDefinationLoginTests.user_enter_invalidPWord(String)[0m
+    [32mAnd [0m[32mclick on submit button for negative test[0m [90m# StepDefinationLoginTests.click_on_submit_button_for_negative_test()[0m
+    [32mThen [0m[32muser should have landing page[0m           [90m# StepDefinationLoginTests.user_should_have_landing_page()[0m
